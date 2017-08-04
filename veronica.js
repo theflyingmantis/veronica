@@ -5,10 +5,9 @@ var mymap = L.map('mapid').setView([26.35773, 73.0632], 12);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
   maxZoom: 18,
-  id: 'mapbox.dark',
+  id: 'mapbox.streets',
   accessToken: 'pk.eyJ1IjoiYWJoaW5hdnJhaSIsImEiOiJjajU3YTduZjMwdjA5MnlwaHU0bnoweDNrIn0.b43RguKtcWbMVJP6jilW6w'
 }).addTo(mymap);
-
 
 let permanentCampusLatLng = [26.47649, 73.122371];
 let mbmCampusLatLng = [26.27068, 73.034893];
