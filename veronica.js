@@ -5,7 +5,7 @@ var mymap = L.map('mapid').setView([26.35773, 73.0632], 12);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
     maxZoom: 18,
-    id: 'mapbox.light',
+    id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoiYWJoaW5hdnJhaSIsImEiOiJjajU3YTduZjMwdjA5MnlwaHU0bnoweDNrIn0.b43RguKtcWbMVJP6jilW6w'
 }).addTo(mymap);
 
@@ -15,25 +15,11 @@ let mbmCampusLatLng = [26.27068, 73.034893];
 let airportLatLng = [26.250152, 73.046908];
 let railwayStationLatLng = [26.283607, 73.023029];
 
-let plotHotels = function () {
-    let totalHotels = hotels.length;
-    for (var i = 0; i < totalHotels; i++) {
-        let hotel = L.marker([hotels[i].lat, hotels[i].lng]).addTo(mymap);
-        let hotelInfo = "<b>" + hotels[i].name + "</b> <br> <b>" + "Address: </b>" + hotels[i].address + "<br> <b>" + "Tariff: </b>" + hotels[i].tariff;
-        hotel.bindTooltip(hotelInfo);
-    }
-};
-
-function setMarker(data) {
-    console.log(data);
-    let hotel = L.marker([data.results["0"].geometry.location.lat, data.results["0"].geometry.location.lng]).addTo(mymap);
-    let hotelInfo = "<b>" + "Hotel" + "</b> <br> <b>" + "Address: </b>" + data.results["0"].formatted_address + "<br> <b>" + "Tariff: </b>" + "1200";
-    hotel.bindTooltip(hotelInfo);
-}
-
 let plotHotelList = function () {
-    for (var i = 0; i < rawList.length; i++) {
-        mapToData(rawList[i]);
+    for (var i = 0; i < hotelList.length; i++) {
+        let hotel = L.marker([hotelList[i].lat, hotelList[i].lng]).addTo(mymap);
+        let hotelInfo = "<b>" + "Hotel: " + "</b>" + hotelList[i].name + "<br> <b>" + "Address: </b>" + hotelList[i].address + "<br> <b>" + "Tariff: </b>" + hotelList[i].tarrif;
+        hotel.bindTooltip(hotelInfo);
     }
 };
 
@@ -68,7 +54,7 @@ let plotTransportations = function () {
     let railwayStationMarker = L.marker(railwayStationLatLng, {icon: railwayIcon}).addTo(mymap);
     airportMarker.bindTooltip("Airport");
     railwayStationMarker.bindTooltip("Railway Station");
-}
+};
 
 let latlngPicker = function () {
     var popup = L.popup();
@@ -81,15 +67,14 @@ let latlngPicker = function () {
     }
 
     mymap.on('click', onMapClick);
-}
+};
 
 
 let init = function () {
-    plotHotels();
     plotHotelList();
     plotCampus();
     plotTransportations();
     latlngPicker();
-}
+};
 
 init();
