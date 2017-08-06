@@ -69,8 +69,15 @@ let latlngPicker = function () {
 
 let busSchedule = function () {
     let time = new Date();
-    let currentTime = time.getHours() + ":" + time.getMinutes();
-    console.log(currentTime);
+    let hours="";
+    if (time.getHours()<10)
+        hours+="0";
+    hours+=time.getHours();
+    let minutes = "";
+    if (time.getMinutes() <10)
+        minutes+="0";
+    minutes+=time.getMinutes();
+    let currentTime = hours+ ":" + minutes;
     let lateNightFlag=1;
     for (var i=0; i<mbmToKarwad.length; i++){
         if (mbmToKarwad[i]>currentTime){
