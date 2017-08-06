@@ -70,6 +70,7 @@ let latlngPicker = function () {
 let busSchedule = function () {
     let time = new Date();
     let currentTime = time.getHours() + ":" + time.getMinutes();
+    console.log(currentTime);
     let lateNightFlag=1;
     for (var i=0; i<mbmToKarwad.length; i++){
         if (mbmToKarwad[i]>currentTime){
