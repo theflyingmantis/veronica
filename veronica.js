@@ -13,7 +13,7 @@ let initialiseMap = function () {
 let plotHotelList = function () {
     for (var i = 0; i < hotelList.length; i++) {
         let hotel = L.marker([hotelList[i].lat, hotelList[i].lng]).addTo(mymap);
-        let hotelInfo = "<b>" + "Hotel: " + "</b>" + hotelList[i].name + "<br> <b>" + "Address: </b>" + hotelList[i].address + "<br> <b>" + "Tariff: </b>" + hotelList[i].tarrif;
+        let hotelInfo = "<b>" + "Hotel: </b>" + hotelList[i].name + "<br> <b> Address: </b>" + hotelList[i].address + "<br> <b> Tariff: </b>" + hotelList[i].tarrif + "<br> <b> Contact: </b>" + hotelList[i].contact;
         hotel.bindTooltip(hotelInfo);
     }
 };
